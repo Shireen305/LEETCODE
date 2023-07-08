@@ -1,0 +1,16 @@
+class Solution:
+    def robhouse(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            return nums[-1]
+        dp=[0]*(len(nums))
+        dp[0]=nums[0]
+        dp[1]=max(nums[0],nums[1])
+        for i in range(2,len(nums)):
+            dp[i]=max(dp[i-1]+0,dp[i-2]+nums[i])
+        return dp[-1]
+    def rob(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            return nums[-1]
+        return max(self.robhouse(nums[0:-1]),self.robhouse(nums[1:]))
+    
+

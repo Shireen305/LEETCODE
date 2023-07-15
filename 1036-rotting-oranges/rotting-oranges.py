@@ -25,7 +25,8 @@ class Solution:
                     q.append((r,c))
 
         while count_no>0 and q:
-            for _ in range(len(q)):
+            length=len(q)
+            for _ in range(length):
                 r,c=q.pop(0)
                 count_no=bfs(r, c,count_no)
             count+=1  

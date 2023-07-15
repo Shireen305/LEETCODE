@@ -26,7 +26,7 @@ class Solution:
             for j in range(len(board[0])):
                 if board[i][j] == "O" and (i,j) not in visited and i!=0 and i!=len(board)-1 and j!=0 and j!=len(board[0])-1:
                     board[i][j]='X'
-                    dfs(i,j)
+                    #dfs(i,j)
         
         
                          

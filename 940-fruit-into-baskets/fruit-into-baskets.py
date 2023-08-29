@@ -1,31 +1,14 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        ans=0
-        fruitdict=defaultdict()
-        stack=[]
-        i,j=0,0
+        basket= {}
+        start= 0
+        for fruit in fruits:
+            basket[fruit]= basket.get(fruit, 0)+ 1
 
-        while j<len(fruits):
-            if fruits[j] not in fruitdict and len(fruitdict)<2:
-                stack.append(fruits[j])
-                fruitdict[fruits[j]]=j
-                j+=1
-
-            elif  fruits[j] in fruitdict:
-                fruitdict[fruits[j]]=j
-                j+=1
-
-            else:  
-                if fruitdict[stack[0]]>fruitdict[stack[1]]  :
-                    print(stack)
-                    i = fruitdict[stack[1]]+1
-                    del fruitdict[stack[1]]
-                    stack.pop()
-                else:
-                    print('Last',stack)
-                    i = fruitdict[stack[0]]+1
-                    del fruitdict[stack[0]] 
-                    stack.pop(0)              
-            
-            ans=max(ans,j-i)
+            if len(basket)> 2:
+                basket[fruits[start]]-= 1
+                if basket[fruits[start]]== 0:
+                    del basket[fruits[start]]
+                start+= 1
+        return len(fruits)- start
         return ans
